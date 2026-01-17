@@ -6,16 +6,17 @@ class Solution:
     def reverseWords(self, s: str) -> str:
         i = 0
         j = 0
-        output = ""
+        buffer = []
         while i < len(s):
             if s[i] == " ":
                 tmp = s[j:i]
-                output += tmp[::-1] + " "
+                buffer.append(tmp[::-1])
                 j = i + 1
             i +=1
 
         remaining = s[j:i]
-        return output + remaining[::-1]
+        buffer.append(remaining[::-1])
+        return " ".join(buffer)
     
 s = Solution()
 print(s.reverseWords("Let's take LeetCode contest"))
